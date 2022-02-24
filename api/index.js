@@ -4,17 +4,25 @@ const app = express();
 const port = 4001;
 
 app.listen(port, () => {
-  console.log("Server on: "+port);
+  console.log("Server on: " + port);
 });
 
-app.post("/hello", function (req, res) {
+app.post("/hello", (req, res) => {
   res.send("[POST] HELLO WORLD");
 });
 
-app.get("/hello", function (req, res) {
+app.get("/hello", (req, res) => {
   res.send("[GET] HELLO WORLD");
 });
 
-app.get("/", function(req, ses){
-    res.send("[GET] HELLO DEVOPS")
+app.put("/hello", (req, res) => {
+  res.send("[UPDATE] HELLO WORLD");
+});
+
+app.delete("/hello", (req, res) => {
+  res.send("[DELETE] HELLO WORLD");
+});
+
+app.get("/", (req, res) =>{
+    res.send("[GET] HELLO DEVOPS");
 });

@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "406c215d-f1ed-4656-b0d7-3c8427d4b847",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET on /",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "LVVMULA-LWUERLQ-VCJSTOA-26WTUQA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstName\":\"    \",\n\"lastName\": \"  \",\n\"role\": \"ADMIN\",\n\"email\": \"a2a@admin.com\",\n\"password\": \"admin\",\n\"avatar\": \"image.png\",\n\"phone\": \"675764374\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001",
+					"host": [
+						"localhost"
+					],
+					"port": "4001"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET on /hello",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "LVVMULA-LWUERLQ-VCJSTOA-26WTUQA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstName\":\"    \",\n\"lastName\": \"  \",\n\"role\": \"ADMIN\",\n\"email\": \"a2a@admin.com\",\n\"password\": \"admin\",\n\"avatar\": \"image.png\",\n\"phone\": \"675764374\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/hello",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST on /hello",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "LVVMULA-LWUERLQ-VCJSTOA-26WTUQA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstName\":\"    \",\n\"lastName\": \"  \",\n\"role\": \"ADMIN\",\n\"email\": \"a2a@admin.com\",\n\"password\": \"admin\",\n\"avatar\": \"image.png\",\n\"phone\": \"675764374\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/hello",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT on /hello",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "LVVMULA-LWUERLQ-VCJSTOA-26WTUQA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstName\":\"    \",\n\"lastName\": \"  \",\n\"role\": \"ADMIN\",\n\"email\": \"a2a@admin.com\",\n\"password\": \"admin\",\n\"avatar\": \"image.png\",\n\"phone\": \"675764374\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/hello",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE on /hello",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "LVVMULA-LWUERLQ-VCJSTOA-26WTUQA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstName\":\"    \",\n\"lastName\": \"  \",\n\"role\": \"ADMIN\",\n\"email\": \"a2a@admin.com\",\n\"password\": \"admin\",\n\"avatar\": \"image.png\",\n\"phone\": \"675764374\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/hello",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
