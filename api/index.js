@@ -15,6 +15,6 @@ app.get("/hello", function (req, res) {
   res.send("[GET] HELLO WORLD");
 });
 
-app.get("/", function(req, ses){
+app.get("/", function(req, res){
     res.send("[GET] HELLO DEVOPS")
 });
