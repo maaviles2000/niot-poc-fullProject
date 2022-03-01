@@ -6,6 +6,12 @@ pipeline{
     }
 
     stages{
+        stage("Install dependencies"){
+            steps{
+                sh "./pre-installs/global-packages.sh"
+                sh "npm ci"
+            }
+        }
         stage("Static Tests"){
             steps{
                 sh "npm run test"
