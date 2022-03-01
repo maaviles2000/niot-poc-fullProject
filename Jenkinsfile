@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage("Install dependencies"){
             steps{
-                sh "./pre-installs/global-packages.sh"
+                sh "npm install -g newman"
                 sh "npm ci"
             }
         }
