@@ -18,11 +18,11 @@ pipeline{
             }
         }
         stage("Run Api and Run Newman"){
-            options {
-                timeout(time: 30, unit: "SECONDS")
-            }
-            parallel( 'runApi':{
+            parallel 'runApi':{
                 stage("Run Api"){
+                    options {
+                        timeout(time: 30, unit: "SECONDS")
+                    }
                     steps{
                         script{
                             try{
@@ -42,7 +42,7 @@ pipeline{
                         sh "npm run newman"
                     }
                 }
-            })   
+            }
         }
     }
 }
