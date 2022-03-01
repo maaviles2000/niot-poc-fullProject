@@ -21,30 +21,28 @@ pipeline{
             options {
                 timeout(time: 30, unit: "SECONDS")
             }
-            steps{
-                parallel 'runApi':{
-                    stage("Run Api"){
-                        steps{
-                            script{
-                                try{
-                                    sh "node api/index.js"
-                                    sleep(time: 3, unit: "SECONDS")
-                                } catch(Throwable e){
-                                    echo "Caught ${e.toString()}"
-                                    currentBuild.result = "SUCCESS"
-                                    
-                                }
-                            } 
-                        }
-                    }
-                }, 'newman':{
-                    stage("Newman"){
-                        steps{
-                            sh "npm run newman"
-                        }
+            parallel 'runApi':{
+                stage("Run Api"){
+                    steps{
+                        script{
+                            try{
+                                sh "node api/index.js"
+                                sleep(time: 3, unit: "SECONDS")
+                            } catch(Throwable e){
+                                echo "Caught ${e.toString()}"
+                                currentBuild.result = "SUCCESS"
+                                
+                            }
+                        } 
                     }
                 }
-            }  
+            }, 'newman':{
+                stage("Newman"){
+                    steps{
+                        sh "npm run newman"
+                    }
+                }
+            }    
         }
     }
 }
