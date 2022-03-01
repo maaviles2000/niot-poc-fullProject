@@ -6,6 +6,11 @@ pipeline{
     }
 
     stages{
+        stage("Install dependencies"){
+            steps{
+                sh "npm ci"
+            }
+        }
         stage("Static Tests"){
             steps{
                 sh "npm run test"
