@@ -12,13 +12,48 @@ pipeline{
                 sh "npm ci"
             }
         }
+
+        stage('Sonarqube') {
+            steps {
+                echo '************* SONARQUBE *************'
+                script {
+                    scannerHome = tool 'sonarscanner'
+                    
+                    withSonarQubeEnv('sonarqube') {
+                        sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
+                    }
+                }
+            }
+        }
+            
+        stage('Quality Gates') {
+            steps {
+                echo '************* QUALITY GATES *************'
+                sleep(60)
+                timeout(time: 1, unit: 'HOURS') {
+                    script  {
+                        def qg = waitForQualityGate()
+                        if (qg.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
+                    }
+                }
+            }
+        }
+
         stage("Static Tests"){
-            /*TODO: SONARQUBE ANALISYS AND QUALITY GATES*/
             steps{
                 sh "npm run test"
             }
         }
-        /*TODO: BUILD*/
+
+        stage("Build Image"){
+            steps{
+                //sh "docker build -t test ."
+                echo "BUILDING IMAGE"
+            }
+        }
+
         stage("Run Api and Run Newman"){
             parallel{
                 /*TODO: RUN API IN BACKGROUND*/
@@ -29,7 +64,7 @@ pipeline{
                     steps{
                         script{
                             try{
-                                sh "node api/index.js"
+                                sh "JENKINS_NODE_COOKIE=dontKillMe && nohup node api/index.js"
                                 sleep(time: 3, unit: "SECONDS")
                             } catch(Throwable e){
                                 echo "Caught ${e.toString()}"
@@ -39,6 +74,7 @@ pipeline{
                         } 
                     }
                 }
+                
                 stage("Newman"){
                     steps{
                         sh "npm run newman"
