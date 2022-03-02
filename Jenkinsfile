@@ -13,12 +13,15 @@ pipeline{
             }
         }
         stage("Static Tests"){
+            /*TODO: SONARQUBE ANALISYS AND QUALITY GATES*/
             steps{
                 sh "npm run test"
             }
         }
+        /*TODO: BUILD*/
         stage("Run Api and Run Newman"){
             parallel{
+                /*TODO: RUN API IN BACKGROUND*/
                 stage("Run Api"){
                     options {
                         timeout(time: 30, unit: "SECONDS")
@@ -43,5 +46,6 @@ pipeline{
                 }
             }
         }
+        /*TODO: TAG AN IMAGE, UP ARTIFACT*/
     }
 }
