@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "dev": "node api/index.js",
-    "newman" : "newman run ./api/collection/Test.postman_collection.json"
+    "newman" : "newman run ./api/collection/Test.postman_collection.json",
+    "build" : "docker build ."
   },
   "repository": {
     "type": "git",
