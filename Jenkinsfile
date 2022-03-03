@@ -59,7 +59,7 @@ pipeline{
             steps{
                 script{
                     withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                    sh "nohup node api/index.js"
+                        sh "node api/index.js"
                     }
                 } 
             }
