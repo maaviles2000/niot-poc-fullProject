@@ -1,0 +1,13 @@
+pipeline{
+    agent any
+    stages{
+        stage("Get package.json version") {
+            steps {
+                script{
+                    def packageJSONVersion = readJSON(file: 'package.json').version
+                    echo packageJSONVersion   
+                }
+            }
+        }
+    }
+}
