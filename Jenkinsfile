@@ -49,7 +49,9 @@ pipeline{
 
         stage("Build Image"){
             steps{
-                //sh "docker build -t test ."
+                /*def packageJSONVersion = readJSON(file: 'package.json').version
+                env.TAG=packageJSONVersion
+                sh "docker build -t back-${TAG} ."*/
                 echo "BUILDING IMAGE"
             }
         }
@@ -58,8 +60,13 @@ pipeline{
         stage("Run Api"){
             steps{
                 script{
-                    withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                        sh "node api/index.js"
+                    try{
+                        sh "JENKINS_NODE_COOKIE=dontKillMe && nohup node api/index.js"
+                        sleep(time: 3, unit: "SECONDS")
+                       } catch(Throwable e){
+                           echo "Caught ${e.toString()}"
+                           currentBuild.result = "SUCCESS"    
+                       }
                     }
                 } 
             }
@@ -70,6 +77,6 @@ pipeline{
                 sh "npm run newman"
             }
         }
-        /*TODO: TAG AN IMAGE, UP ARTIFACT*/
+        /*TODO: UP ARTIFACT*/
     }
 }
