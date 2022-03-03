@@ -60,13 +60,7 @@ pipeline{
         stage("Run Api"){
             steps{
                 script{
-                    try{
                         sh "JENKINS_NODE_COOKIE=dontKillMe && nohup node api/index.js"
-                        sleep(time: 3, unit: "SECONDS")
-                       } catch(Throwable e){
-                           echo "Caught ${e.toString()}"
-                           currentBuild.result = "SUCCESS"    
-                       }
                     }
                 } 
             }
