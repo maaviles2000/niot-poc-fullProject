@@ -54,32 +54,18 @@ pipeline{
             }
         }
 
-        stage("Run Api and Run Newman"){
-            parallel{
-                /*TODO: RUN API IN BACKGROUND*/
-                stage("Run Api"){
-                    options {
-                        timeout(time: 30, unit: "SECONDS")
-                    }
-                    steps{
-                        script{
-                            try{
-                                sh "JENKINS_NODE_COOKIE=dontKillMe && nohup node api/index.js"
-                                sleep(time: 3, unit: "SECONDS")
-                            } catch(Throwable e){
-                                echo "Caught ${e.toString()}"
-                                currentBuild.result = "SUCCESS"
-                                
-                            }
-                        } 
-                    }
-                }
+        /*TODO: RUN API IN BACKGROUND*/
+        stage("Run Api"){
+            steps{
+                script{
+                    sh "JENKINS_NODE_COOKIE=dontKillMe && nohup node api/index.js"   
+                } 
+            }
+        }
                 
-                stage("Newman"){
-                    steps{
-                        sh "npm run newman"
-                    }
-                }
+        stage("Newman"){
+            steps{
+                sh "npm run newman"
             }
         }
         /*TODO: TAG AN IMAGE, UP ARTIFACT*/
