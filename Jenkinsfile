@@ -85,9 +85,11 @@ pipeline{
         }
         stage("Build Image"){
             steps{
-                def packageJSONVersion = readJSON(file: 'package.json').version
-                env.TAG=packageJSONVersion
-                sh "docker build -t niot-poc-${TAG} ."
+                script{
+                    def packageJSONVersion = readJSON(file: 'package.json').version
+                    env.TAG=packageJSONVersion
+                    sh "docker build -t niot-poc-${TAG} ."
+                }
             }
         }
         stage('Upload image') {
