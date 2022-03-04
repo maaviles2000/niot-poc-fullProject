@@ -1,6 +1,7 @@
 def targetBranch = ghprbTargetBranch;
 def sourceBranch = ghprbSourceBranch;
-def pattern = "^(feature|^[0-9]*$)"
+def numberPattern = '^[0-9]*$';
+def pattern = '^(feature|${numberPattern})';
 def prToDevelopExpression = targetBranch == 'develop' && sourceBranch.startsWith(pattern);
 
 pipeline{
