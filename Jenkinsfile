@@ -49,7 +49,9 @@ pipeline{
 
         stage("Build Image"){
             steps{
-                //sh "docker build -t test ."
+                /*def packageJSONVersion = readJSON(file: 'package.json').version
+                env.TAG=packageJSONVersion
+                sh "docker build -t back-${TAG} ."*/
                 echo "BUILDING IMAGE"
             }
         }
@@ -58,8 +60,7 @@ pipeline{
         stage("Run Api"){
             steps{
                 script{
-                    withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                        sh "node api/index.js"
+                        sh "JENKINS_NODE_COOKIE=dontKillMe && nohup node api/index.js"
                     }
                 } 
             }
@@ -70,6 +71,6 @@ pipeline{
                 sh "npm run newman"
             }
         }
-        /*TODO: TAG AN IMAGE, UP ARTIFACT*/
+        /*TODO: UP ARTIFACT*/
     }
 }
