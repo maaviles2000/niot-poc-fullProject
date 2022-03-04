@@ -1,6 +1,6 @@
 def targetBranch = ghprbTargetBranch;
 def sourceBranch = ghprbSourceBranch;
-def prToDevelopExpression = targetBranch == 'develop' && sourceBranch.startsWith('feature/');
+def prToDevelopExpression = targetBranch == 'develop' && sourceBranch.startsWith('feature/' || '^[0-9]*$');
 
 pipeline{
     agent any
